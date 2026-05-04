@@ -8,14 +8,9 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
 import { User } from '../users/models/entities/user.entity';
-import { UserDto } from './models/dto/auth-response.dto';
+import { AuthResponseDto, UserDto } from './models/dto/auth-response.dto';
 import { toUserDto } from '../users/models/mappings/user.mapping';
 import { JwtPayload } from '../../common/types/jwt-payload.type';
-
-type AuthResponse = {
-  accessToken: string;
-  user: UserDto;
-};
 
 const BCRYPT_SALT_ROUNDS = 10;
 
@@ -54,7 +49,7 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string): Promise<AuthResponse> {
+  async login(email: string, password: string): Promise<AuthResponseDto> {
     try {
       const normalizedEmail = this.normalizeEmail(email);
 
@@ -91,7 +86,7 @@ export class AuthService {
     }
   }
 
-  private buildAuthResponse(user: User): AuthResponse {
+  private buildAuthResponse(user: User): AuthResponseDto {
     const accessToken = this.signAccessToken(user);
     return { accessToken, user: toUserDto(user) };
   }

@@ -23,7 +23,8 @@
     "migration:create": "sh -c 'node -r ts-node/register ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:create src/database/migrations/$1' --",
     "migration:run": "node -r ts-node/register ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:run",
     "migration:revert": "node -r ts-node/register ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:revert",
-    "migration:show": "node -r ts-node/register ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:show"
+    "migration:show": "node -r ts-node/register ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:show",
+    "swagger:generate": "ts-node -r tsconfig-paths/register scripts/generate-swagger.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -32,6 +33,7 @@
     "@nestjs/jwt": "^11.0.2",
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/swagger": "^11.4.2",
     "@nestjs/typeorm": "^11.0.1",
     "bcrypt": "^6.0.0",
     "class-transformer": "^0.5.1",
