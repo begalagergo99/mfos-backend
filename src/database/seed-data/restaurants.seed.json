@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Burger House",
+    "description": "Fresh burgers, crispy fries, and homemade drinks.",
+    "address": "Main Street 12",
+    "menuItems": [
+      {
+        "name": "Classic Burger",
+        "description": "Beef patty, lettuce, tomato, onion, and house sauce.",
+        "price": 2990,
+        "isAvailable": true
+      },
+      {
+        "name": "Cheese Burger",
+        "description": "Beef patty, cheddar cheese, pickles, and ketchup.",
+        "price": 3290,
+        "isAvailable": true
+      },
+      {
+        "name": "Fries",
+        "description": "Crispy golden fries with sea salt.",
+        "price": 990,
+        "isAvailable": true
+      },
+      {
+        "name": "Lemonade",
+        "description": "Fresh homemade lemonade.",
+        "price": 790,
+        "isAvailable": true
+      }
+    ]
+  },
+  {
+    "name": "Pasta Corner",
+    "description": "Italian pasta dishes and desserts.",
+    "address": "Pasta Avenue 5",
+    "menuItems": [
+      {
+        "name": "Carbonara",
+        "description": "Spaghetti with creamy sauce, pancetta, and parmesan.",
+        "price": 3490,
+        "isAvailable": true
+      },
+      {
+        "name": "Arrabbiata",
+        "description": "Penne pasta with spicy tomato sauce.",
+        "price": 2990,
+        "isAvailable": true
+      },
+      {
+        "name": "Tiramisu",
+        "description": "Classic Italian coffee-flavoured dessert.",
+        "price": 1490,
+        "isAvailable": true
+      },
+      {
+        "name": "Sparkling Water",
+        "description": "Chilled sparkling mineral water.",
+        "price": 590,
+        "isAvailable": true
+      }
+    ]
+  }
+]
