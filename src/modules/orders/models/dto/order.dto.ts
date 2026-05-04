@@ -34,6 +34,23 @@ export class OrderItemDto {
   quantity!: number;
 }
 
+export class OrderSummaryDto {
+  @ApiProperty({ example: '550e8400-e29b-41d4-a716-446655440002', description: 'UUID of the order' })
+  id!: string;
+
+  @ApiProperty({ enum: OrderStatus, example: OrderStatus.PENDING, description: 'Current status of the order' })
+  status!: OrderStatus;
+
+  @ApiProperty({ example: 5980, description: 'Total price in HUF' })
+  totalPrice!: number;
+
+  @ApiProperty({ example: '2026-05-04T13:40:29.227Z', description: 'Timestamp when the order was created' })
+  createdAt!: Date;
+
+  @ApiProperty({ example: 'Burger House', description: 'Name of the restaurant' })
+  restaurantName!: string;
+}
+
 export class OrderDetailsDto {
   @ApiProperty({ example: '550e8400-e29b-41d4-a716-446655440002', description: 'UUID of the order' })
   id!: string;

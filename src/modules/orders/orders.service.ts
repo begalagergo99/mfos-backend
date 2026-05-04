@@ -6,10 +6,11 @@ import {
 import { MenuItem } from '../restaurants/models/entities/menu-item.entity';
 import { OrderItem } from './models/entities/order-item.entity';
 import { CreateOrderDto, CreateOrderItemDto } from './models/dto/create-order.dto';
-import { CreateOrderResponseDto, OrderDetailsDto } from './models/dto/order.dto';
+import { CreateOrderResponseDto, OrderDetailsDto, OrderSummaryDto } from './models/dto/order.dto';
 import {
   toCreateOrderResponseDto,
   toOrderDetailsDto,
+  toOrderSummaryDto,
 } from './models/mappings/order.mapping';
 import { OrdersRepository } from './orders.service.repository';
 
@@ -56,6 +57,11 @@ export class OrdersService {
       throw new NotFoundException('Order not found');
     }
     return toOrderDetailsDto(order);
+  }
+
+  async findOrdersByUser(userId: string): Promise<OrderSummaryDto[]> {
+    const orders = await this.ordersRepository.findOrdersByUserId(userId);
+    return orders.map(toOrderSummaryDto);
   }
 
   private getRequestedMenuItemIds(items: CreateOrderItemDto[]): string[] {

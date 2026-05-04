@@ -17,7 +17,7 @@ import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import type { JwtPayload } from '../../common/types/jwt-payload.type';
 import { CreateOrderDto } from './models/dto/create-order.dto';
-import { CreateOrderResponseDto, OrderDetailsDto } from './models/dto/order.dto';
+import { CreateOrderResponseDto, OrderDetailsDto, OrderSummaryDto } from './models/dto/order.dto';
 import { OrdersService } from './orders.service';
 
 @ApiTags('Orders')
@@ -38,6 +38,17 @@ export class OrdersController {
     @Body() createOrderDto: CreateOrderDto,
   ): Promise<CreateOrderResponseDto> {
     return this.ordersService.createOrder(currentUser.sub, createOrderDto);
+  }
+
+  @Get()
+  @ApiBearerAuth('jwt')
+  @ApiOperation({ summary: 'Get all orders for the authenticated user' })
+  @ApiResponse({ status: 200, description: 'Returns all orders for the user.', type: [OrderSummaryDto] })
+  @ApiResponse({ status: 401, description: 'Unauthorized.' })
+  findMyOrders(
+    @CurrentUser() currentUser: JwtPayload,
+  ): Promise<OrderSummaryDto[]> {
+    return this.ordersService.findOrdersByUser(currentUser.sub);
   }
 
   @Get(':id')

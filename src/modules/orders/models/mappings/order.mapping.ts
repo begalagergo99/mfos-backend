@@ -4,6 +4,7 @@ import {
   OrderDetailsDto,
   OrderItemDto,
   OrderRestaurantDto,
+  OrderSummaryDto,
 } from '../dto/order.dto';
 
 export function toCreateOrderResponseDto(order: Order): CreateOrderResponseDto {
@@ -11,6 +12,16 @@ export function toCreateOrderResponseDto(order: Order): CreateOrderResponseDto {
     id: order.id,
     status: order.status,
     totalPrice: order.totalPrice,
+  };
+}
+
+export function toOrderSummaryDto(order: Order): OrderSummaryDto {
+  return {
+    id: order.id,
+    status: order.status,
+    totalPrice: order.totalPrice,
+    createdAt: order.createdAt,
+    restaurantName: order.restaurant.name,
   };
 }
 

@@ -11,7 +11,7 @@ export const getTypeOrmConfig = (): TypeOrmModuleOptions => ({
   autoLoadEntities: true,
   synchronize: false,
 
-  migrations: ['dist/database/migrations/*.js'],
+  migrations: [__dirname + '/../../database/migrations/*.js'],
   migrationsRun: false,
 
   logging: process.env.NODE_ENV === 'development',

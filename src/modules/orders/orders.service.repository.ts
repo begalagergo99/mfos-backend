@@ -44,4 +44,12 @@ export class OrdersRepository {
       relations: { restaurant: true, items: true },
     });
   }
+
+  async findOrdersByUserId(userId: string): Promise<Order[]> {
+    return this.orderRepository.find({
+      where: { user: { id: userId } },
+      relations: { restaurant: true, items: true },
+      order: { createdAt: 'DESC' },
+    });
+  }
 }
